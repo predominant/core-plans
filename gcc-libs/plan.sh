@@ -12,7 +12,6 @@ pkg_build_deps=(core/gcc/$pkg_version core/patchelf)
 pkg_bin_dirs=()
 pkg_include_dirs=()
 
-
 # The list of GCC libraries to copy
 _gcc_libs=(
   libasan

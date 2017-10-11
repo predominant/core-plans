@@ -46,7 +46,6 @@ nimbus.task.launch.secs: {{task-launch-secs}}
 nimbus.file.copy.expiration.secs: {{file-copy-expiration-secs}}
 nimbus.topology.validator: {{topology-validator}}
 
-
 nimbus.credential.renewers.freq.secs: {{credential-renewers-freq-secs}}
 nimbus.queue.size: {{queue-size}}
 
@@ -94,7 +93,6 @@ supervisor.memory.capacity.mb: {{memory-capacity-mb}}
 supervisor.cpu.capacity: {{cpu-capacity}}
 {{~/with}}
 
-
 ### worker.* configs are for task workers
 {{~#with cfg.worker}}
 supervisor.slots.ports:
@@ -132,7 +130,6 @@ ui.http.creds.plugin: {{http-creds-plugin}}
 ui.http.x-frame-options: {{http-x-frame-options}}
 {{~/with}}
 
-
 ########### These all have default values as shown
 ########### retrieved from https://raw.githubusercontent.com/apache/storm/v1.0.0/conf/defaults.yaml
 
@@ -169,7 +166,6 @@ backpressure.disruptor.low.watermark: {{cfg.backpressure-disruptor-high-watermar
 topology.min.replication.count: {{cfg.topology-min-replication-count}}
 topology.max.replication.wait.time.sec: {{cfg.topology-max-replication-wait-time-sec}}
 scheduler.display.resource: {{cfg.scheduler-display-resource}}
-
 
 {{#with cfg.storm ~}}
 ### storm.* configs are general configurations
@@ -257,8 +253,6 @@ transactional.zookeeper.servers: {{zookeeper-servers}}
 transactional.zookeeper.port: {{zookeeper-port}}
 {{~/with}}
 
-
-
 {{#with cfg.task ~}}
 task.heartbeat.frequency.secs: {{heartbeat-frequency-secs}}
 task.refresh.poll.secs: {{refresh-poll-secs}}
@@ -291,7 +285,6 @@ storm.messaging.netty.socket.backlog: {{socket-backlog}}
 storm.messaging.netty.authentication: {{authentication}}
 storm.messaging.netty.server_worker_threads: {{server_worker_threads}}
 {{/with ~}}
-
 
 ### topology.* configs are for specific executing storms
 {{~#with cfg.topology}}
@@ -348,7 +341,6 @@ topology.scheduler.strategy: {{scheduler-strategy}}
 
 topology.worker.receiver.thread.count: {{worker-receiver-thread-count}}
 {{~/with}}
-
 
 {{~#with with cfg.pacemaker}}
 pacemaker.host: {{host}}

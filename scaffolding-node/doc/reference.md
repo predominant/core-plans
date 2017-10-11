@@ -367,7 +367,6 @@ hab start acmecorp/my_app --bind elasticsearch:es.my_app
 
 Other Scaffolding packages may offer framework-specific app type detection in order to make further default behavior easier. However, this is currently no app type detection for this Scaffolding package.
 
-
 [12factor_backing_services]: https://12factor.net/https://12factor.net/backing-services
 [12factor_build]: https://12factor.net/build-release-run
 [12factor_config]: https://12factor.net/config

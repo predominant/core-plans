@@ -55,7 +55,6 @@ do_install() {
   ln -sv libbz2.so.$pkg_version $pkg_prefix/lib/libbz2.so.$maj_min
 }
 
-
 # ----------------------------------------------------------------------------
 # **NOTICE:** What follows are implementation details required for building a
 # first-pass, "stage1" toolchain and environment. It is only used when running

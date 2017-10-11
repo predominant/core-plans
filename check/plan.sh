@@ -18,7 +18,6 @@ do_install() {
   rm -rfv $pkg_prefix/share/info/dir $pkg_prefix/share/doc/check/*ChangeLog*
 }
 
-
 # ----------------------------------------------------------------------------
 # **NOTICE:** What follows are implementation details required for building a
 # first-pass, "stage1" toolchain and environment. It is only used when running

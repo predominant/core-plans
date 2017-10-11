@@ -92,7 +92,6 @@ do_install() {
   ln -sv bash $pkg_prefix/bin/sh
 }
 
-
 # ----------------------------------------------------------------------------
 # **NOTICE:** What follows are implementation details required for building a
 # first-pass, "stage1" toolchain and environment. It is only used when running

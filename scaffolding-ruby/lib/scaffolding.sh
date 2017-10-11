@@ -180,9 +180,6 @@ EOT
   done
 }
 
-
-
-
 scaffolding_bundle_install() {
   local start_sec elapsed dot_bundle
 
@@ -424,9 +421,6 @@ scaffolding_create_process_bins() {
   done
 }
 
-
-
-
 _setup_funcs() {
   # Use the stock `do_default_build_config` by renaming it so we can call the
   # stock behavior. How does this rate on the evil scale?
@@ -633,9 +627,6 @@ _update_svc_run() {
   fi
 }
 
-
-
-
 _add_busybox() {
   build_line "Adding Busybox package to run dependencies"
   pkg_deps=(core/busybox-static ${pkg_deps[@]})
@@ -813,9 +804,6 @@ _detect_webpacker() {
     debug "Updating pkg_deps=(${pkg_deps[*]}) from Scaffolding detection"
   fi
 }
-
-
-
 
 # **Internal** Invokes the `bundle` program using the chosen version of Ruby.
 # This way, we should avoid most Bundler warnings about mismatched Ruby

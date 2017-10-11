@@ -48,7 +48,6 @@ docker-compose up
 
 We intend to support a prod ready clustering solution similar to [patroni](https://github.com/zalando/patroni) and are working on getting there quickly.
 
-
 ## Binding
 
 Consuming services can bind to PostgreSQL via:

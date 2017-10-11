@@ -24,7 +24,6 @@ do_install() {
   ln -sv flex $pkg_prefix/bin/lex
 }
 
-
 # ----------------------------------------------------------------------------
 # **NOTICE:** What follows are implementation details required for building a
 # first-pass, "stage1" toolchain and environment. It is only used when running

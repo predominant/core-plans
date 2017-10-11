@@ -82,9 +82,6 @@ EOT
   done
 }
 
-
-
-
 scaffolding_modules_install() {
   if [[ -n "${_uses_git:-}" ]]; then
     if ! git check-ignore node_modules && [[ -d node_modules ]]; then
@@ -213,9 +210,6 @@ scaffolding_create_process_bins() {
     _create_process_bin "$pkg_prefix/bin/${pkg_name}-${bin}" "$cmd"
   done
 }
-
-
-
 
 _setup_funcs() {
   # Use the stock `do_default_build_config` by renaming it so we can call the
@@ -403,15 +397,11 @@ _update_svc_run() {
   fi
 }
 
-
-
-
 _add_busybox() {
   build_line "Adding Busybox package to run dependencies"
   pkg_deps=(core/busybox-static ${pkg_deps[@]})
   debug "Updating pkg_deps=(${pkg_deps[*]}) from Scaffolding detection"
 }
-
 
 _detect_git() {
   if [[ -d ".git" ]]; then
@@ -423,7 +413,6 @@ _detect_git() {
 }
 
 _detect_node() {
-
   if [[ -n "$scaffolding_node_pkg" ]]; then
     _node_pkg="$scaffolding_node_pkg"
     build_line "Detected Node.js version in Plan, using '$_node_pkg'"
@@ -471,9 +460,6 @@ _detect_yarn() {
     debug "Updating pkg_build_deps=(${pkg_build_deps[*]}) from Scaffolding detection"
   fi
 }
-
-
-
 
 _create_process_bin() {
   local bin cmd env_sh
@@ -618,7 +604,6 @@ stable_versions_list() {
 	echo "${sorted_versions_array[@]}"
 }
 
-
 _nearest_version_on_builder() {
 	local original_version_string=$1
 
@@ -759,9 +744,7 @@ function semverEQ() {
 		return 1
 	fi
 
-
 	return 0
-
 }
 
 function semverLT() {
@@ -805,7 +788,6 @@ function semverLT() {
 	fi
 
 	return 1
-
 }
 
 function semverGT() {
@@ -847,7 +829,6 @@ function semverLE() {
 }
 
 if [ "___semver.sh" == "___$(basename "$0")" ]; then
-
 	MAJOR=0
 	MINOR=0
 	PATCH=0
@@ -867,5 +848,4 @@ if [ "___semver.sh" == "___$(basename "$0")" ]; then
 
 	semverGT "$1" "$2"
 	echo "$1 > $2 -> $?."
-
 fi
