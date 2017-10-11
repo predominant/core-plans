@@ -32,7 +32,7 @@ do_download() {
   rm -rf "PowerShell"
   # Important to recursively clone submodules.
   # This is why we do not download source
-  git clone -b v$pkg_version --recursive "$pkg_source"
+  git clone -b "v$pkg_version" --recursive "$pkg_source"
   popd
 }
 
@@ -68,27 +68,27 @@ do_build() {
 
   pushd src/ResGen
   dotnet build
-  find -type f -name 'resgen' \
+  find . -type f -name 'resgen' \
     -exec patchelf --interpreter "$(pkg_path_for glibc)/lib/ld-linux-x86-64.so.2" --set-rpath "$LD_RUN_PATH" {} \;
-  find -type f -name '*.so*' \
+  find . -type f -name '*.so*' \
     -exec patchelf --set-rpath "$LD_RUN_PATH" {} \;
   dotnet run
   popd
 
   pushd src/TypeCatalogParser
   dotnet build --runtime ubuntu.14.04-x64
-  find -type f -name 'TypeCatalogParser' \
+  find . -type f -name 'TypeCatalogParser' \
     -exec patchelf --interpreter "$(pkg_path_for glibc)/lib/ld-linux-x86-64.so.2" --set-rpath "$LD_RUN_PATH" {} \;
-  find -type f -name '*.so*' \
+  find . -type f -name '*.so*' \
     -exec patchelf --set-rpath "$LD_RUN_PATH" {} \;
   bin/Debug/netcoreapp1.0/ubuntu.14.04-x64/TypeCatalogParser
   popd
 
   pushd src/TypeCatalogGen
   dotnet build
-  find -type f -name 'TypeCatalogGen' \
+  find . -type f -name 'TypeCatalogGen' \
     -exec patchelf --interpreter "$(pkg_path_for glibc)/lib/ld-linux-x86-64.so.2" --set-rpath "$LD_RUN_PATH" {} \;
-  find -type f -name '*.so*' \
+  find . -type f -name '*.so*' \
     -exec patchelf --set-rpath "$LD_RUN_PATH" {} \;
   dotnet run ../Microsoft.PowerShell.CoreCLR.AssemblyLoadContext/CorePsTypeCatalog.cs powershell.inc
   popd
@@ -103,7 +103,7 @@ do_build() {
   popd
 
   pushd src/powershell-unix
-  find -type f -name '*.so*' \
+  find . -type f -name '*.so*' \
     -exec patchelf --set-rpath "$LD_RUN_PATH" {} \;
   dotnet build --configuration Linux
   popd

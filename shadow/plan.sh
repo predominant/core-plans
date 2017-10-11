@@ -13,7 +13,7 @@ do_prepare() {
   # Allow dots in usernames.
   #
   # Thanks to: http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/sys-apps/shadow/files/shadow-4.1.3-dots-in-usernames.patch
-  patch -p1 -i $PLAN_CONTEXT/dots-in-usernames.patch
+  patch -p1 -i "$PLAN_CONTEXT/dots-in-usernames.patch"
 
   # Disable the installation of the `groups` program as Coreutils provides a
   # better version.
@@ -32,7 +32,7 @@ do_prepare() {
 
 do_build() {
   ./configure \
-    --prefix=$pkg_prefix \
+    --prefix="$pkg_prefix" \
     --with-acl \
     --with-attr \
     --with-group-name-max-length=32 \
@@ -46,11 +46,11 @@ do_install() {
 
   # Move all binaries in `sbin/` into `bin/` as this isn't handled by
   # `./configure`.
-  mv $pkg_prefix/sbin/* $pkg_prefix/bin/
-  rm -rf $pkg_prefix/sbin
+  mv "$pkg_prefix/sbin/*" "$pkg_prefix/bin/"
+  rm -rf "$pkg_prefix/sbin"
 
   # Install the license
-  install -Dm644 COPYING $pkg_prefix/share/licenses/COPYING
+  install -Dm644 COPYING "$pkg_prefix/share/licenses/COPYING"
 }
 
 # ----------------------------------------------------------------------------

@@ -17,7 +17,7 @@ do_build() {
 
 do_install() {
   make -f unix/Makefile \
-    prefix=$pkg_prefix \
-    MANDIR=${pkg_prefix}/share/man/man1 \
+    prefix="$pkg_prefix" \
+    MANDIR="$pkg_prefix/share/man/man1" \
     install
 }

@@ -21,7 +21,7 @@ pkg_bin_dirs=(bin)
 do_download() {
   # downloading from bitbucket with wget results in a 403.
   # So then we implement our own `do_download` with `curl`.
-  pushd $HAB_CACHE_SRC_PATH > /dev/null
+  pushd "$HAB_CACHE_SRC_PATH" > /dev/null
   if [[ -f $pkg_filename ]]; then
     build_line "Found previous file '${pkg_filename}', attempting to re-use"
     if verify_file $pkg_filename $pkg_shasum; then
@@ -34,7 +34,7 @@ do_download() {
   fi
 
   build_line "Downloading '${pkg_source}' to '${pkg_filename}' with curl"
-  curl -L -O $pkg_source --cacert $(pkg_path_for cacerts)/ssl/cert.pem
+  curl -L -O "$pkg_source" --cacert "$(pkg_path_for cacerts)/ssl/cert.pem"
   build_line "Downloaded '${pkg_filename}'";
   popd > /dev/null
 }
@@ -53,12 +53,12 @@ do_strip() {
 }
 
 do_install() {
-  cp -vR * ${pkg_prefix}
+  cp -vR ./* "$pkg_prefix"
 
   build_line "Setting interpreter for '${pkg_prefix}/bin/phantomjs' '$(pkg_path_for glibc)/lib/ld-linux-x86-64.so.2'"
   build_line "Setting rpath for '${pkg_prefix}/bin/phantomjs' to '$LD_RUN_PATH'"
 
   patchelf --interpreter "$(pkg_path_for glibc)/lib/ld-linux-x86-64.so.2" \
-           --set-rpath ${LD_RUN_PATH} \
-           ${pkg_prefix}/bin/phantomjs
+           --set-rpath "$LD_RUN_PATH" \
+           "$pkg_prefix/bin/phantomjs"
 }

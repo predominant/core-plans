@@ -17,10 +17,10 @@ do_prepare() {
   # Do not look under `/usr` for dependencies.
   #
   # Thanks to: https://github.com/NixOS/nixpkgs/blob/release-15.09/pkgs/development/interpreters/perl/5.22/no-sys-dirs.patch
-  patch -p1 -i $PLAN_CONTEXT/no-sys-dirs.patch
+  patch -p1 -i "$PLAN_CONTEXT/no-sys-dirs.patch"
 
   # Skip the only failing test in the suite--not bad, eh?
-  patch -p1 -i $PLAN_CONTEXT/skip-wide-character-test.patch
+  patch -p1 -i "$PLAN_CONTEXT/skip-wide-character-test.patch"
 
   #  Make Cwd work with the `pwd` command from `coreutils` (we cannot rely
   #  on `/bin/pwd` exisiting in an environment)
@@ -54,7 +54,7 @@ do_prepare() {
   # build directory, which will contain the build shared Perl library.
   #
   # Thanks to: http://perl5.git.perl.org/perl.git/blob/c52cb8175c7c08890821789b4c7177b1e0e92558:/INSTALL#l478
-  export LD_LIBRARY_PATH="`pwd`:$LD_RUN_PATH"
+  export LD_LIBRARY_PATH="$(pwd):$LD_RUN_PATH"
   build_line "Setting LD_LIBRARY_PATH=$LD_LIBRARY_PATH"
 }
 
@@ -65,9 +65,9 @@ do_build() {
 
   sh Configure \
     -de \
-    -Dprefix=$pkg_prefix \
-    -Dman1dir=$pkg_prefix/share/man/man1 \
-    -Dman3dir=$pkg_prefix/share/man/man3 \
+    -Dprefix="$pkg_prefix" \
+    -Dman1dir="$pkg_prefix/share/man/man1" \
+    -Dman3dir="$pkg_prefix/share/man/man3" \
     -Dlocincpth="$locincpth" \
     -Dloclibpth="$loclibpth" \
     -Dpager="$(pkg_path_for less)/bin/less -isR" \

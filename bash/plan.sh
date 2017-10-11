@@ -7,7 +7,7 @@ pkg_maintainer="The Habitat Maintainers <humans@habitat.sh>"
 pkg_license=('gplv3+')
 _url_base=http://ftp.gnu.org/gnu/$pkg_distname
 pkg_source=$_url_base/${pkg_distname}-${_base_version}.tar.gz
-pkg_dirname=${pkg_distname}-$_base_version
+pkg_dirname=${pkg_distname}-${_base_version}
 pkg_shasum=afc687a28e0e24dc21b988fa159ff9dbcf6b7caa92ade8645cc6d5605cd024d4
 pkg_deps=(core/glibc core/ncurses core/readline)
 pkg_build_deps=(core/coreutils core/diffutils core/patch core/make core/gcc)
@@ -23,7 +23,7 @@ do_begin() {
 
   # Source a file containing an array of patch URLs and an array of patch file
   # shasums
-  source $PLAN_CONTEXT/bash-patches.sh
+  source "$PLAN_CONTEXT/bash-patches.sh"
 }
 
 do_download() {
@@ -33,7 +33,7 @@ do_download() {
   # skip re-downloading if already present and verified
   for i in $(seq 0 $((${#_patch_files[@]} - 1))); do
     p="${_patch_files[$i]}"
-    download_file $p $(basename $p) ${_patch_shasums[$i]}
+    download_file "$p" "$(basename $p)" "${_patch_shasums[$i]}"
   done; unset i p
 }
 
@@ -52,17 +52,17 @@ do_prepare() {
   # Apply all patch files to the extracted source
   for p in "${_patch_files[@]}"; do
     build_line "Applying patch $(basename $p)"
-    patch -p0 -i $HAB_CACHE_SRC_PATH/$(basename $p)
+    patch -p0 -i "$HAB_CACHE_SRC_PATH/$(basename $p)"
   done
 }
 
 do_build() {
   ./configure \
-    --prefix=$pkg_prefix \
+    --prefix="$pkg_prefix" \
     --with-curses \
     --enable-readline \
     --without-bash-malloc \
-    --with-installed-readline=$(pkg_path_for readline)
+    --with-installed-readline="$(pkg_path_for readline)"
   make
 }
 
@@ -72,7 +72,7 @@ do_check() {
   local clean_cmds=()
   for cmd in /bin/rm /bin/cat /bin/touch /bin/chmod /usr/bin/printf /bin/echo; do
     if [[ ! -r "$cmd" ]]; then
-      ln -sv $(pkg_path_for coreutils)/bin/$(basename $cmd) $cmd
+      ln -sv "$(pkg_path_for coreutils)/bin/$(basename $cmd)" "$cmd"
       clean_cmds+=($cmd)
     fi
   done
@@ -89,7 +89,7 @@ do_install() {
   do_default_install
 
   # Add an `sh` which symlinks to `bash`
-  ln -sv bash $pkg_prefix/bin/sh
+  ln -sv bash "$pkg_prefix/bin/sh"
 }
 
 # ----------------------------------------------------------------------------

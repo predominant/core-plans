@@ -10,7 +10,7 @@ pkg_build_deps=(core/coreutils core/diffutils core/patch core/make core/gcc core
 pkg_bin_dirs=(bin)
 
 do_prepare() {
-  cat $PLAN_CONTEXT/cleanup.patch \
+  cat "$PLAN_CONTEXT/cleanup.patch" \
     | sed \
       -e "s,@prefix@,$pkg_prefix,g" \
       -e "s,@clens_prefix@,$(pkg_path_for clens),g" \
@@ -19,7 +19,7 @@ do_prepare() {
 }
 do_build() {
   make \
-    prefix=$pkg_prefix \
+    prefix="$pkg_prefix" \
     PKG_CONFIG=pkg-config \
     INSTALL=install \
     STRIP=strip

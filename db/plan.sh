@@ -14,7 +14,7 @@ pkg_lib_dirs=(lib)
 do_build() {
   pushd build_unix > /dev/null
   ../dist/configure \
-    --prefix=$pkg_prefix \
+    --prefix="$pkg_prefix" \
     --enable-compat185 \
     --enable-cxx \
     --enable-dbm \

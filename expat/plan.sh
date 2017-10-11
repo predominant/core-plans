@@ -17,7 +17,7 @@ do_prepare() {
   # Patch for CVE-2015-1283
   #
   # Thanks to: https://github.com/NixOS/nixpkgs/blob/release-15.09/pkgs/development/libraries/expat/default.nix
-  patch -p1 -i $PLAN_CONTEXT/CVE-2015-1283.patch
+  patch -p1 -i "$PLAN_CONTEXT/CVE-2015-1283.patch"
 }
 
 do_check() {

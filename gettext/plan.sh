@@ -13,7 +13,7 @@ pkg_include_dirs=(include)
 
 do_build() {
   ./configure \
-    --prefix=$pkg_prefix
+    --prefix="$pkg_prefix"
   make -j$(nproc)
 }
 

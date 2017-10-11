@@ -14,10 +14,10 @@ do_build() {
 }
 
 do_install() {
-  install -v -t $pkg_prefix/lib $HAB_CACHE_SRC_PATH/$pkg_dirname/logback-core-${pkg_version}.jar \
-    $HAB_CACHE_SRC_PATH/$pkg_dirname/logback-core-${pkg_version}-sources.jar \
-    $HAB_CACHE_SRC_PATH/$pkg_dirname/logback-access-${pkg_version}.jar \
-    $HAB_CACHE_SRC_PATH/$pkg_dirname/logback-access-${pkg_version}-sources.jar \
-    $HAB_CACHE_SRC_PATH/$pkg_dirname/logback-classic-${pkg_version}.jar \
-    $HAB_CACHE_SRC_PATH/$pkg_dirname/logback-classic-${pkg_version}-sources.jar
+  install -v -t "$pkg_prefix/lib" "$HAB_CACHE_SRC_PATH/$pkg_dirname/logback-core-${pkg_version}.jar" \
+    "$HAB_CACHE_SRC_PATH/$pkg_dirname/logback-core-${pkg_version}-sources.jar" \
+    "$HAB_CACHE_SRC_PATH/$pkg_dirname/logback-access-${pkg_version}.jar" \
+    "$HAB_CACHE_SRC_PATH/$pkg_dirname/logback-access-${pkg_version}-sources.jar" \
+    "$HAB_CACHE_SRC_PATH/$pkg_dirname/logback-classic-${pkg_version}.jar" \
+    "$HAB_CACHE_SRC_PATH/$pkg_dirname/logback-classic-${pkg_version}-sources.jar"
 }

@@ -13,8 +13,8 @@ pkg_lib_dirs=(lib)
 
 do_build() {
   export JAVA_HOME=$(hab pkg path core/jdk8)
-  pushd $HAB_CACHE_SRC_PATH/$pkg_name-rel-$pkg_version
-  sh ./build.sh -Ddist.dir=$pkg_prefix dist
+  pushd "$HAB_CACHE_SRC_PATH/$pkg_name-rel-$pkg_version"
+  sh ./build.sh -Ddist.dir="$pkg_prefix" dist
 }
 
 do_install() {

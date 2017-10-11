@@ -14,7 +14,7 @@ pkg_include_dirs=(include)
 pkg_lib_dirs=(lib)
 
 do_build() {
-    make linux MYCFLAGS="$CFLAGS" MYLDFLAGS="$LDFLAGS" INSTALL_TOP=$pkg_prefix
+    make linux MYCFLAGS="$CFLAGS" MYLDFLAGS="$LDFLAGS" INSTALL_TOP="$pkg_prefix"
 }
 
 do_check() {
