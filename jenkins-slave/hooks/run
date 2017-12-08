@@ -1,0 +1,5 @@
+#!/bin/sh
+
+exec 2>&1
+
+exec java -jar {{pkg.svc_data_path}}/slave.jar -jnlpUrl http://{{bind.jenkins.host}}:{{bind.jenkins.port}}/computer/{{cfg.name}}/slave-agent.jnlp

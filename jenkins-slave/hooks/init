@@ -1,0 +1,3 @@
+#!/bin/sh
+
+wget -O {{pkg.svc_data_path}}/slave.jar http://{{bind.jenkins.host}}:{{bind.jenkins.port}}/jnlpJars/slave.jar
