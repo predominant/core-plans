@@ -1,14 +1,14 @@
 pkg_name=mongodb
 pkg_origin=core
-pkg_version=3.6.4
+pkg_version=3.6.6
 pkg_maintainer="The Habitat Maintainers <humans@habitat.sh>"
 pkg_description="High-performance, schema-free, document-oriented database"
 pkg_license=('AGPL-3.0')
-pkg_source=https://fastdl.mongodb.org/src/mongodb-src-r3.6.4.tar.gz
-pkg_shasum=1a9697c3ad2f5545b5160d5e32d5f3c0f6f0a3371ceb9fa85961aec513acd7ac
+pkg_source="https://fastdl.mongodb.org/src/mongodb-src-r${pkg_version}.tar.gz"
+pkg_shasum=e3b9e30941f314d0b1d89f85af3b1258aa2f72a9df21e44cf4aa08faf262e406
 pkg_upstream_url=https://www.mongodb.com/
-pkg_filename=${pkg_name}-src-r${pkg_version}.tar.gz
-pkg_dirname=${pkg_name}-src-r${pkg_version}
+pkg_filename="${pkg_name}-src-r${pkg_version}.tar.gz"
+pkg_dirname="${pkg_name}-src-r${pkg_version}"
 pkg_deps=(
   core/coreutils
   core/gcc-libs
