@@ -12,27 +12,50 @@ pkg_deps=(
   core/glibc
 )
 pkg_build_deps=(
-    core/autoconf
-    core/automake
-    core/bison
-    core/coreutils
-    core/diffutils
-    core/flex
-    core/gcc
-    core/libtool
-    core/make
-    core/pkg-config
+  core/autoconf
+  core/automake
+  core/bison
+  core/coreutils
+  core/diffutils
+  core/flex
+  core/gcc
+  core/libtool
+  core/make
+  core/pkg-config
+  core/libgd
+  core/libpng
+  core/file
 )
 pkg_lib_dirs=(lib)
 pkg_bin_dirs=(bin)
 pkg_include_dirs=(include)
 
 do_prepare() {
+  if [[ ! -r /usr/bin/file ]]; then
+    ln -s $(pkg_path_for core/file)/bin/file /usr/bin/file
+    _clean_file=true
+  fi
+
   libtoolize
-  ./autogen.sh
+  ACLOCAL_PATH="${ACLOCAL_PATH}:$(pkg_path_for core/pkg-config)/share/aclocal" ./autogen.sh
+}
+
+do_build() {
+  attach
+  ./configure \
+    --prefix="${pkg_prefix}" \
+    --with-gdincludedir="$(pkg_path_for core/libgd)/include" \
+    --with-gdlibdir="$(pkg_path_for core/libgd)/lib"
+  make
 }
 
 do_install() {
-    make install
-    install -Dm644 COPYING "${pkg_prefix}/share/licenses/license.txt"
+  make install
+  install -Dm644 COPYING "${pkg_prefix}/share/licenses/license.txt"
+}
+
+do_end() {
+  if [[ -n "$_clean_file" ]]; then
+    rm -fv /usr/bin/file
+  fi
 }
