@@ -38,7 +38,7 @@ pkg_build_deps=(
 # pkg_interpreters=(bin/bash)
 # pkg_svc_user="hab"
 # pkg_svc_group="$pkg_svc_user"
-# pkg_description="Some description."
+pkg_description="Discussion platform built for the next decade of the Internet."
 pkg_upstream_url="https://www.discourse.org/"
 
 do_build() {
