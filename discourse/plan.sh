@@ -39,7 +39,7 @@ pkg_build_deps=(
 # pkg_svc_user="hab"
 # pkg_svc_group="$pkg_svc_user"
 # pkg_description="Some description."
-# pkg_upstream_url="http://example.com/project-name"
+pkg_upstream_url="https://www.discourse.org/"
 
 do_build() {
   bundle install \
