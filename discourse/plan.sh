@@ -41,6 +41,10 @@ pkg_build_deps=(
 pkg_description="Discussion platform built for the next decade of the Internet."
 pkg_upstream_url="https://www.discourse.org/"
 
+do_setup_environment() {
+  export BUNDLE_SILENCE_ROOT_WARNING=1
+}
+
 do_build() {
   bundle install \
     --deployment \
