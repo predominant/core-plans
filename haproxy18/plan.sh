@@ -1,4 +1,9 @@
-source ../haproxy/plan.sh
+if [[ $(caller) = *"test"* ]] || [[ $(caller) = *"bats"* ]]; then
+  source haproxy/plan.sh
+else
+  source ../haproxy/plan.sh
+fi
+
 
 pkg_name=haproxy18
 pkg_distname=haproxy

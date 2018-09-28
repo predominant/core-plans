@@ -12,7 +12,7 @@ source "${BATS_TEST_DIRNAME}/../plan.sh"
 
 @test "Service is running" {
   echo -e "$(hab svc status)"
-  [ "$(hab svc status | grep "haproxy16\.default" | awk '{print $4}' | grep up)" ]
+  [ "$(hab svc status | grep "haproxy17\.default" | awk '{print $4}' | grep up)" ]
 }
 
 @test "Listening on port 80" {
