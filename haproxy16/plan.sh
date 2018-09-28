@@ -1,4 +1,4 @@
-source ../haproxy/plan.sh
+attach source ../haproxy/plan.sh
 
 pkg_name=haproxy16
 pkg_distname=haproxy
