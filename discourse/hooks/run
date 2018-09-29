@@ -2,6 +2,6 @@
 
 exec 2>&1
 # LD_PRELOAD=$RUBY_ALLOCATOR HOME=/home/discourse USER=discourse exec thpoff chpst -u discourse:www-data -U discourse:www-data bundle exec config/unicorn_launcher -E production -c config/unicorn.conf.rb
-exec bundle exec config/unicorn_launcher -E {{cfg.environment}} -c config/unicorn.conf.rb
 
-https://downloads.sourceforge.net/project/pmt/pngcrush/1.8.13/pngcrush-1.8.13.tar.xz
+cd ${HAB_DISCOURSE_PATH}
+exec bundle exec config/unicorn_launcher -E {{cfg.environment}} -c config/unicorn.conf.rb
