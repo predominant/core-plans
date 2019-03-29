@@ -6,7 +6,7 @@ $pkg_upstream_url="https://github.com/declarativesystems/pats"
 $pkg_description="PowerShell Acceptance Testing System"
 $pkg_maintainer="The Habitat Maintainers <humans@habitat.sh>"
 $pkg_source="https://github.com/declarativesystems/pats/archive/master.zip"
-$pkg_shasum="TODO"
+$pkg_shasum="8dd5b2a738e364d0ab14a5e99e2e9228eea2ce5a92645cbc322131e0a4e23aa4"
 
 # pkg_filename="${pkg_name}-${pkg_version}.tar.gz"
 # pkg_shasum="TODO"
