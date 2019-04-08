@@ -1,0 +1,5 @@
+#!/bin/bash
+
+exec 2>&1
+
+ln -s "{{pkg.path}}/bin" "{{pkg.svc_path}}/bin"

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+exec 2>&1
+
+SPLUNK_HOME="{{pkg.svc_path}}"
+SPLUNK_ETC="{{pkg.svc_config_path}}"
+export SPLUNK_HOME SPLUNK_ETC
+exec splunk start --accept-license --answer-yes --no-prompt
