@@ -1,21 +1,24 @@
 pkg_name=kibana
-pkg_version=6.1.0
+pkg_version=7.2.0
 pkg_origin=core
 pkg_license=('Apache-2.0')
 pkg_maintainer="The Habitat Maintainers <humans@habitat.sh>"
 pkg_description="Kibana is a browser based analytics and search dashboard for Elasticsearch."
 pkg_upstream_url=https://www.elastic.co/products/kibana
-pkg_source=https://github.com/elastic/${pkg_name}/archive/v${pkg_version}.tar.gz
-pkg_shasum=3f9b9179bae432e45411f7b207578d8232ca2d6fc184a5780b6d696d6037b55a
-pkg_filename=${pkg_name}-${pkg_version}.tar.gz
-pkg_deps=(core/node)
+pkg_source="https://github.com/elastic/${pkg_name}/archive/v${pkg_version}.tar.gz"
+pkg_shasum=58fc517cb65db149d54fa9a67e5853d08750c0f4fb893c8a2634c909682908f0
+pkg_filename="${pkg_name}-${pkg_version}.tar.gz"
+# Kibana requires a specific version of NodeJS
+pkg_deps=(
+  core/node10/10.15.2
+)
 pkg_build_deps=(
   core/cacerts
   core/coreutils
   core/gcc
   core/git
   core/make
-  core/node
+  core/yarn
   core/python2
 )
 pkg_exports=(
@@ -42,7 +45,7 @@ do_prepare() {
 }
 
 do_build () {
-  npm install
+  yarn
 }
 
 do_install() {
