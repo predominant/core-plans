@@ -1,5 +1,5 @@
 0.0.0.0:{{cfg.http.port}}
 {{#if cfg.gzip.enabled ~}}
-gzip
+encode gzip zstd
 {{/if ~}}
-root {{pkg.svc_data_path}}
+root * {{pkg.svc_data_path}}
