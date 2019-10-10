@@ -3,3 +3,11 @@ port = 8080
 
 [gzip]
 enabled = true
+
+[http3]
+enabled = false
+
+[tls]
+enabled = false
+certificate_file = "cert.pem"
+key_file = "cert.key"

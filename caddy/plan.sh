@@ -15,6 +15,8 @@ pkg_exports=(
 pkg_bin_dirs=(bin)
 pkg_deps=(core/glibc)
 pkg_dirname="${pkg_name}-v${pkg_version}"
+pkg_svc_user="root"
+pkg_svc_group="root"
 
 do_unpack() {
   return 0

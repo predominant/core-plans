@@ -1,5 +1,14 @@
+{
+{{#if cfg.http3.enabled ~}}
+experimental_http3
+{{/if ~}}
+}
+
 0.0.0.0:{{cfg.http.port}}
 {{#if cfg.gzip.enabled ~}}
 encode gzip zstd
 {{/if ~}}
 root * {{pkg.svc_data_path}}
+{{#if cfg.tls.enabled ~}}
+tls {{pkg.svc_files_path}}/{{cfg.tls.certificate_file}} {{pkg.svc_files_path}}/{{cfg.tls.key_file}}
+{{/if ~}}
